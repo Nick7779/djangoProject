@@ -6,10 +6,12 @@ import hashlib
 # Create your models here.
 
 class AuthUser(models.Model):
-    user_name = models.CharField(max_length=20, verbose_name="用户名", null=False, unique=True)
+    user_name = models.CharField(max_length=20, name="用户名", verbose_name="用户名", null=False, unique=True)
     login_name = models.CharField(max_length=20, verbose_name="登录账号", null=False, unique=True)
     e_mail = models.CharField(max_length=20, verbose_name="邮箱", null=True, unique=True)
     password = models.CharField(max_length=20, verbose_name="密码")
+    last_login = models.DateTimeField(null=True)
+    # 逻辑删除标识字段
     is_delete = models.BooleanField(default=False)
 
     class Meta:
